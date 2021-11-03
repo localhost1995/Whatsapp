@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Holostik India Ltd. Noida- Extension List</title>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    	<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+    	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script>$(document).ready(function() {$('#example').DataTable({"paging":false,"info":false});} );</script>
+	<link rel="stylesheet" href="../css/templatemo-style.css">
+	<script src="../js/jquery.js"></script>
+
+	<script type="text/javascript">
+		 $(document).ready(function(){
+			$('#btnWhatsApp').click(function(){
+				var sContactNumber=$('#contactNumber').val()
+				window.location = 'https://api.whatsapp.com/send/?phone=' + sContactNumber + '&text&lang=En&app_absent=0'
+			});
+		 });
+		 
+	</script>
+</head>
+<body>
+
+	<h2 style="width:100%; text-align:center;">Chat on whatsapp using mobile number<h2>
+	<h3 style="width:100%; text-align:center;">Extension List</h3>
+
+	<div class="w3-display-right w3-padding w3-col 16 m4">
+              <label><i class="fa fa-user"></i> Mobile No</label>
+            <input class="w3-input w3-border" type="text"  placeholder="Enter Contact Number" name="contactNumber" id="contactNumber"  >
+			<input type="button" name="btnWhatsApp" id="btnWhatsApp" text="Start Chat" class="whats-app" target="_blank" href="#">
+  </div>
+</body>
+</html>
