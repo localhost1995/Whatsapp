@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Chat with whatsapp</title>
+     <!-- add icon link -->
+     <link rel = "icon" href = "images/logo.png"  type = "image/x-icon">
+     <meta charset="UTF-8">
+	 
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/templatemo-style.css">
+	 <script src="js/jquery.js"></script>
+	 <script type="text/javascript">
+	 $(document).ready(function(){
+	      $('#AvailtheoffersNow').click(function(){
+		  
+            var sname=$('#name').val()
+			var smobile=$('#mobile').val()
+			var semail=$('#email').val()
+			
+            $.ajax({
+                url: 'https://tgroz9ryhi.execute-api.ap-south-1.amazonaws.com/Prod/api/Leads',
+                method: 'POST',
+                data: {
+
+                    name: sname ,
+                    mobile: smobile,
+                    email: semail,
+					date:''
+
+                },
+                success: function () {
+                    
+                      window.alert('Thank you for showing interest in the project. Soon we will call you for exciting offers');
+                },
+                error: function () {
+
+                   window.alert('Thank you for showing interest in the project. Soon we will call you for exciting offers');
+                }
+
+            });
+	      });
+		  
+		$('#sendMessage').click(function(){
+		  
+            var scontactName=$('#contactName').val()
+			var scontactPhone=$('#contactPhone').val()
+			var scontactMessage=$('#contactMessage').val()
+			
+            $.ajax({
+                url: 'https://tgroz9ryhi.execute-api.ap-south-1.amazonaws.com/Prod/api/Email',
+                method: 'POST',
+                data: {
+
+                    ToAddress: 'vinay.shukla88@gmail.com' ,
+                    Subject: 'Customer Communication from ' + scontactName + ' (' + scontactPhone + ')',
+                    Body: scontactMessage
+
+                },
+                success: function () {
+                    
+                      window.alert('Thank you for contacting us. Soon we will reply to your query');
+                },
+                error: function () {
+
+                   window.alert('Thank you for contacting us. Soon we will reply to your query');
+                }
+
+            });
+	      });
+		  
+		  
+		  $('#SubscribeForNewsLetter').click(function(){
+		  
+            var snewsLetterEmail=$('#newsLetterEmail').val()
+			
+            $.ajax({
+                url: 'https://tgroz9ryhi.execute-api.ap-south-1.amazonaws.com/Prod/api/NewsLetter',
+                method: 'POST',
+                data: {
+                    email: snewsLetterEmail 
+                },
+                success: function () {
+                    
+                      window.alert('Congratulations. Now you are subscribed to our monthly news letter');
+                },
+                error: function () {
+
+                   window.alert('Congratulations. Now you are subscribed to our monthly news letter');
+                }
+
+            });
+	      });
+		  
+
+	    /*
+        $('.hover_bkgr_fricc').click(function(){
+          $('.hover_bkgr_fricc').hide();
+        });
+	    */
+        $('.popupCloseButton').click(function(){
+          $('.hover_bkgr_fricc').hide();
+        });
+		
+		
+	    $('#POPUPsendMessage').click(function(){
+		  
+            var sPOPUPName=$('#POPUPName').val()
+			var sPOPUPMobile=$('#POPUPMobile').val()
+			var sPOPUPEmail='No Email. It was from POP UP'
+			$('.hover_bkgr_fricc').hide();
+            $.ajax({
+                url: 'https://tgroz9ryhi.execute-api.ap-south-1.amazonaws.com/Prod/api/Leads',
+                method: 'POST',
+                data: {
+                    name: sPOPUPName ,
+                    mobile: sPOPUPMobile,
+                    email: sPOPUPEmail,
+					date:''
+                },
+                success: function () {
+                      window.alert('Thank you for showing interest in the project. Soon we will call you for exciting offers');
+                },
+                error: function () {
+                      window.alert('Thank you for showing interest in the project. Soon we will call you for exciting offers');
+                }
+
+            });
+	    });
+		
+		window.onload = function() {
+			setTimeout(function() {
+			$('.hover_bkgr_fricc').show();
+		    }, 10000);
+        }
+
+		  
+	 });
+	 </script>
+	 <!-- Added by Lalit on 03-10-2021 for image list-->
+	<script>
+		function openModal() {
+		  document.getElementById("MenuBar").style.display="none";
+		  document.getElementById("myModal").style.display = "block";
+		}
+
+		function closeModal() {
+		  document.getElementById("myModal").style.display = "none";
+		  document.getElementById("MenuBar").style.display = "block";
+		}
+
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		  showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		  showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  var dots = document.getElementsByClassName("demo");
+		  var captionText = document.getElementById("caption");
+		  if (n > slides.length) {slideIndex = 1}
+		  if (n < 1) {slideIndex = slides.length}
+		  for (i = 0; i < slides.length; i++) {
+			  slides[i].style.display = "none";
+		  }
+		  for (i = 0; i < dots.length; i++) {
+			  dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";
+		  dots[slideIndex-1].className += " active";
+		  captionText.innerHTML = dots[slideIndex-1].alt;
+		}
+	</script>
+	<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+		<script type="text/javascript">
+		 $(document).ready(function(){
+			$('#btnWhatsApp').click(function(){
+				var sContactNumber=$('#contactNumber').val()
+				window.location = 'https://api.whatsapp.com/send/?phone=' + sContactNumber + '&text&lang=En&app_absent=0'
+			});
+		 });
+		 
+	</script>
+
+</head>
+
+<div >
+              <label><i class="fa fa-user"></i> Mobile No(Add 91 without +)</label>
+            <input class="w3-input w3-border" type="text"  placeholder="Enter Contact Number" name="contactNumber" id="contactNumber"  >
+          <a name="btnWhatsApp" id="btnWhatsApp" class="whats-app" target="_blank" href="#"><i class="fa fa-whatsapp" style="font-size:55px;color:white"></i></a>
+  </div>
+
+   
+     <!-- SCRIPTS -->
+     
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+</html>
